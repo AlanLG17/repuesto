@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material</title>
+    <style>
+        body {
+            font-family: 'Garamond', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Garamond', serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .category {
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Garamond', serif;
+        }
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .category h2 {
+            margin: 0;
+            padding: 15px;
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Garamond', serif;
+        }
+        .category:hover h2 {
+            background-color: #555;
+        }
+        .subcategory ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .subcategory ul li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+        }
+        .subcategory ul li:last-child {
+            border-bottom: none;
+        }
+        .subcategory ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            transition: color 0.3s ease;
+            font-family: 'Garamond', serif;
+        }
+        .subcategory ul li a:hover {
+            color: #555;
+        }
+        .list-icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Listas</h1>
+    </header>
+    <div class="container">
+        <div class="category" onclick="toggleSubcategory('Combinatoria')">
+            <h2>Combinatoria <span>&#9660;</span></h2>
+            <div class="subcategory" id="Combinatoria">
+                <ul>
+                   <!-- <li>
+                        <a href="/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf">Coloraciones</a>
+                        <div class="list-icons">
+                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf')"title="PDF">📂</span>
+                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.tex')"title="LaTeX">📃</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf">Principio de Casillas</a>
+                        <div class="list-icons">
+                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf')"title="PDF">📂</span>
+                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.tex')"title="LaTeX">📃</span>
+                        </div>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+        <div class="container">
+            <div class="category" onclick="toggleSubcategory('Álgebra')">
+                <h2>Álgebra <span>&#9660;</span></h2>
+                <div class="subcategory" id="Álgebra">
+                    <ul>
+                        <!--<li>
+                            <a href="/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf">Coloraciones</a>
+                            <div class="list-icons">
+                                <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf')"title="PDF">📂</span>
+                                <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.tex')"title="LaTeX">📃</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf">Principio de Casillas</a>
+                            <div class="list-icons">
+                                <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf')"title="PDF">📂</span>
+                                <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.tex')"title="LaTeX">📃</span>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <div class="category" onclick="toggleSubcategory('teoriadenumeros')">
+                    <h2>Teoría de Números <span>&#9660;</span></h2>
+                    <div class="subcategory" id="teoriadenumeros">
+                        <ul>
+                            <!--<li>
+                                <a href="/texs/Intermedio/Teoría de números/congruencias/congruencias.pdf">Congruencias</a>
+                                <div class="list-icons">
+                                    <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf')"title="PDF">📂</span>
+                                    <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.tex')"title="LaTeX">📃</span>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf">Principio de Casillas</a>
+                                <div class="list-icons">
+                                    <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf')"title="PDF">📂</span>
+                                    <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.tex')"title="LaTeX">📃</span>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                <div class="container">
+                    <div class="category" onclick="toggleSubcategory('Geometría')">
+                        <h2>Geometría <span>&#9660;</span></h2>
+                        <div class="subcategory" id="Geometría">
+                            <ul>
+                                <!--<li>
+                                    <a href="/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf">Coloraciones</a>
+                                    <div class="list-icons">
+                                        <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf')"title="PDF">📂</span>
+                                        <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.tex')"title="LaTeX">📃</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf">Principio de Casillas</a>
+                                    <div class="list-icons">
+                                        <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf')"title="PDF">📂</span>
+                                        <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.tex')"title="LaTeX">📃</span>
+                                    </div>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    <div class="container">
+                        <div class="category" onclick="toggleSubcategory('Misceláneo')">
+                            <h2>Misceláneo <span>&#9660;</span></h2>
+                            <div class="subcategory" id="Misceláneo">
+                                <ul>
+                                    <!--<li>
+                                        <a href="/texs/Intermedio/Misceláneo/técnicas/tecnicas.pdf">Técnicas</a>
+                                        <div class="list-icons">
+                                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.pdf')"title="PDF">📂</span>
+                                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/coloraciones/coloraciones.tex')"title="LaTeX">📃</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf">Principio de Casillas</a>
+                                        <div class="list-icons">
+                                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.pdf')"title="PDF">📂</span>
+                                            <span class="list-icon" onclick="openText('/texs/Intermedio/Combinatoria/principio de casillas/casillas.tex')"title="LaTeX">📃</span>-->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+            </div>
+            <script>
+                function toggleSubcategory(subcategoryId) {
+                    var subcategory = document.getElementById(subcategoryId);
+                    if (subcategory.style.display === "block") {
+                        subcategory.style.display = "none";
+                    } else {
+                        subcategory.style.display = "block";
+                    }
+                }
+            
+                function openText(url) {
+                    window.open(url, '_blank');
+                }
+            </script>
+            </body>
+            </html>

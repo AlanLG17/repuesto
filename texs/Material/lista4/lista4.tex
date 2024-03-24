@@ -1,0 +1,101 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{amsthm}
+\usepackage[helvetica]{quotchap} 
+
+\title{?sdag-vld¿sl´vk/dgvdd}
+\author{AlanLG}
+\date{10 de Marzo del 2024}
+
+\begin{document}
+
+\maketitle
+
+\epigraph{No tengo tiempo, no tengo tiempo...}
+{\emph{Evaristé Galois}}
+
+
+\begin{problem}[\href{https://www.proyectomuro.com/OMMEB/2017/}{OMMEB 2017 N1}]
+    
+    
+    
+    Considera la siguiente sucesión de figuras. ¿Cuántos puntitos tendrá la figura $9$?
+    
+    \begin{center}
+        
+    \begin{asy}
+        /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(5cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -1.2535139692934074, xmax = 8.728416679112101, ymin = -2.8675320711349337, ymax = 3.195112923908944;  /* image dimensions */
+
+ /* draw figures */
+ /* dots and labels */
+dot((0,0),dotstyle); 
+dot((0,1),dotstyle); 
+dot((1,1),dotstyle); 
+dot((1,0),dotstyle); 
+dot((1.5,0.5),dotstyle); 
+dot((3,0.5),dotstyle); 
+dot((3,1.2),dotstyle); 
+dot((3,-0.2),dotstyle); 
+dot((3.7,1.2),linewidth(4pt) + dotstyle); 
+dot((4.4,1.2),linewidth(4pt) + dotstyle); 
+dot((3.7,0.5),linewidth(4pt) + dotstyle); 
+dot((4.4,0.5),linewidth(4pt) + dotstyle); 
+dot((4.4,-0.2),linewidth(4pt) + dotstyle); 
+dot((3.7,-0.2),linewidth(4pt) + dotstyle); 
+dot((5,0.8),dotstyle); 
+dot((5,0.2),dotstyle); 
+dot((5.5,0.5),linewidth(4pt) + dotstyle); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+label("Figura 1", (0.5,1.7),N);
+label("Figura 2", (4,1.7),N);
+ /* end of picture */
+        
+        \end{asy}
+        \end{center}
+    
+\end{problem}
+\vspace{0.8cm}
+\begin{problem}
+   ¿De cuántas formas se pueden repartir 10 chocolates entre 4 niños?
+\end{problem}
+\vspace{0.8cm}
+\begin{problem}
+ABCD es un paralelogramo. El área de las regiones se muestran, encuentra el área del triángulo rojo. (El diagrama no está a escala)
+\begin{center}
+\begin{asy}
+    size(8cm);
+    draw((0,0)--(3,0)--(2.5,2)--(-0.4,2)--cycle);
+    draw((0,0)--(0.3,2)--(1.8,0)--(2.5,2));
+    draw((-0.4,2)--(2.85,0.6)--(0,0));
+    filldraw((-0.4,2)--(0.3,2)--(0.26,1.72)--cycle,lightred);
+    filldraw((1.55,0.33)--(0.63,1.55)--(0.26,1.72)--(0,0)--cycle,lightyellow);
+    filldraw((1.55,0.33)--(1.8,0)--(1.94,0.41)--cycle,lightyellow);
+    filldraw((2.12,0.91)--(2.85,0.6)--(1.94,0.41)--cycle,lightyellow);
+    filldraw((2.12,0.91)--(0.63,1.55)--(0.3,2)--(2.5,2)--cycle,lightyellow);
+    label("8",(1.77,0.25));
+    label("10",(2.3,0.64));
+    label("79",(0.63,0.74));
+    label("72",(1.54,1.61));
+    label("?",(0.05,1.91));
+    label("D",(0,0),SW);
+    label("C",(3,0),SE);
+    label("B",(2.5,2),NE);
+    label("A",(-0.4,2),NW);
+    
+    \end{asy}
+\end{center}
+\end{problem}
+\vspace{0.8cm}
+\begin{problem}
+ 
+[\href{https://chiuchang.org/wp-content/uploads/sites/2/2018/01/2016_TIMC_Keystage_III_Team_Final.x17381.pdf}{Regional Zona Centro 2008/P1}] 
+Encuentra todas las parejas de enteros $a,b$ tales que 
+\[a^2-3a=b^3-2\]
+\end{problem}
+
+\end{document}

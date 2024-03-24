@@ -1,0 +1,20 @@
+\begin{hintitem}{2.1}
+    Colorea de ajedrez
+\end{hintitem}
+\begin{hintitem}{2.2}
+\phantom{.}
+
+    \begin{center}
+    \begin{asy}
+ size(6cm);
+int n = 10;
+
+for (int i = 0; i <= n; ++i) { for (int j = 0; j <= n; ++j) { if (j % 2 == 1) {  fill((i,j) -- (i,j+1) -- (i+1,j+1) -- (i+1,j) -- cycle, black); } } draw((i,0)--(i,n), gray(0.5)); draw((0,i)--(n,i), gray(0.5)); }
+filldraw((10,0)--(11,0)--(11,10)--(10,10)--cycle, white, white);
+draw((10,0)--(10,10));
+\end{asy}
+\end{center}
+
+
+    
+\end{hintitem}

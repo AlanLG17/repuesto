@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material de Estudio</title>
+    <style>
+        body {
+            font-family: 'Garamond', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        
+    
+        header {
+            background-color: #333;
+            color: #ffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Garamond', serif;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .category {
+            background-color: #f5ffff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Garamond', serif;
+        }
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .category h2 {
+            margin: 0;
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Garamond', serif;
+        }
+        .category p {
+            margin: 0;
+            font-size: 18px;
+            color: #666;
+            font-family: 'Garamond', serif;
+        }
+        .category img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .category a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            background-color: #8c8c8c;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Garamond', serif;
+        }
+        .category a:hover {
+            background-color: #666;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 10px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+        @media (max-width: 768px) {
+            .category {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .category {
+                width: calc(100% - 20px);
+            }
+        }
+
+
+        body {
+            background-image: url('ruta_de_la_imagen.jpg'); /* Ruta de la imagen de fondo */
+            background-size: cover; /* Ajustar la imagen al tamaño del contenedor */
+            background-repeat: no-repeat; /* No repetir la imagen */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Material de Estudio</h1>
+    </header>
+
+    <div class="container">
+        <div class="category">
+            <h2>Elemental</h2>
+            <img src="ruta_a_la_imagen_elemental.jpg" alt="Material Elemental">
+            <p>Contenido para nivel elemental, incluyendo ejercicios y teoría básica.</p>
+            <a href="/eiam/elemental.html">Ir a Elemental</a>
+        </div>
+
+        <div class="category">
+            <h2>Intermedio</h2>
+            <img src="ruta_a_la_imagen_intermedio.jpg" alt="Material Intermedio">
+            <p>Material para niveles intermedios, con ejercicios desafiantes y conceptos avanzados.</p>
+            <a href="/eiam/intermedio.html">Ir a Intermedio</a>
+        </div>
+
+        <div class="category">
+            <h2>Avanzado</h2>
+            <img src="ruta_a_la_imagen_avanzado.jpg" alt="Material Avanzado">
+            <p>Material para niveles avanzados, con problemas complejos y teoría avanzada.</p>
+            <a href="/eiam/avanzado.html">Ir a Avanzado</a>
+        </div>
+
+        <div class="category">
+            <h2>Listas cortas</h2>
+            <img src="ruta_a_la_imagen_general.jpg" alt="Material General">
+            <p>Material que abarca diferentes niveles y temas, para todo tipo de estudiantes.</p>
+            <a href="/eiam/material.html">Ir a Listas</a>
+        </div>
+    </div>
+
+</body>
+</html>
+

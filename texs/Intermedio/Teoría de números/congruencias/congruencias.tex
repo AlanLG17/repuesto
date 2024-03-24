@@ -1,0 +1,295 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+
+
+
+\usepackage{answers}
+\Newassociation{hint}{hintitem}{all-hints}
+\renewcommand{\solutionextension}{out}
+\renewenvironment{hintitem}[1]{\item[\bfseries #1.]}{}
+
+\title{Congruencias}
+
+
+\author{AlanLG}
+\date{15 de Febrero 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Lectura}
+Vamos a presentar el concepto de módulo en teoría de números, decimos que 
+
+\[a\equiv b\pmod c \iff c\mid a-b\]
+y se lee $"a"$ congruente a $"b"$ módulo $c$, lo cuál es equivalente a decir que $a$ y $b$ dejan el mismo residuo al dividirse entre $c$. Por ejemplo tenemos que 
+\begin{align*}
+13 &\equiv 5\pmod 4\\
+101 &\equiv 13\pmod 9\\
+25 &\equiv 0\pmod 5\\
+11 &\equiv 3\pmod 8 \end{align*}
+Algo importante es que nos da igual si los números son positivos o no, por ejemplo 
+\begin{align*}
+10 &\equiv -1\pmod {11}\\
+19 &\equiv -2\pmod {11} \end{align*}
+Esto es útil pues a veces puede ser más facil trabajar con residuos negativos.
+\vspace{0.2cm}
+
+\begin{example}
+    Si hoy es martes, ¿Qué día será en $2024$ días?
+    \end{example}
+\begin{flushleft}La semana tiene $7$ días, como $2024\equiv 1\pmod 7$ entonces basta añadirle un día a martes y entonces es $2024$ días será miércoles.
+\end{flushleft}
+  
+\begin{flushleft}
+Esta nueva notación (módulos) nos permite trabajar más fácil con divisibilidades, es más práctica que la notación de $x\mid y$ ($x$ divide a $y$), nos da una opción de trabajar una divisibildad como algo que sería similar a una ecuación, y además es útil pues conserva muchas propiedas intuitivas.\end{flushleft}
+\subsection{Propiedades}
+\subsection*{Transitividad}
+\[\text{Si} \hspace{0.1cm} a\equiv b\pmod k \hspace{0.2cm} \text{y} \hspace{0.2cm} b\equiv c\pmod k \Rightarrow a\equiv c\pmod k\]
+\subsection*{Suma}
+\[\text{Si}\hspace{0.2cm}a\equiv b\pmod k\hspace{0.3cm}\text{y}\hspace{0.3cm} x\equiv y\pmod k\Rightarrow a+x\equiv b+y\pmod k\]
+
+\subsection*{Multiplicación}
+\[\text{Si}\hspace{0.2cm}a\equiv b\pmod k\hspace{0.3cm}\text{y}\hspace{0.3cm} x\equiv y\pmod k\Rightarrow ax\equiv by\pmod k\]
+
+\subsection*{Potencia}
+\[\text{Si}\hspace{0.2cm}a\equiv b\pmod k\Rightarrow a^n\equiv b^n\pmod k\]
+\vspace{0.1cm}
+
+\subsection*{División}
+¿Si $ax\equiv bx\pmod k$ podemos dividir por $x$ y asegurar que $a\equiv b\pmod k$? no se puede, pongamos el ejemplo de la congruencia $3a\equiv 6\pmod {12}$ no podemos dividir entre $3$ y asegurar $a\equiv 2\pmod {12}$, pues nota que $a\equiv 2,6\hspace{0.1cm}\text{y}\hspace{0.1cm} 10\pmod {12}$ también cumplen, es claro que no podemos dividir pues 
+\[ax\equiv bx\pmod k \Rightarrow k\mid x(a-b) \hspace{0.2cm} \text{y puede suceder que $k$ y $x$ tengan factores en común}\]
+En realidad si se puede dividir pero hay que tener cuidado, la regla es que si
+
+\[ax\equiv bx\pmod k\Rightarrow a\equiv b\pmod{ \frac{k}{\operatorname{mcd}(x,k)}}\]
+Note que si $\operatorname{mcd}(x,k)=1$ entonces ¡si podemos dividir sin problemas!
+
+\subsection{Ejercicios}
+\begin{exercise}
+[Importante]
+    Trata de demostrar o de convercerte de que todas estas  propiedades son verdad y que no estoy engañandote, puedes usar que cualquier número $a$ se puede escribir como $a=k\cdot m+ r$ donde $r$ es el residuo de $a$ al dividirse por $k$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Demuestra que si $a\equiv b\pmod n$ y $d$ es un divisor del número $n$ entonces $a\equiv b\pmod d$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Encuentra el residuo de $123\times 29$ al dividirse por $13$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Encuentra el residuo de $13^{2023}$ al dividirse entre $12$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Encuentra todos los enteros  $k$ tales que $2024\equiv 17\pmod k$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Encuentra el residuo de $2^{2023}$ al dividirse entre $7$
+\end{exercise}
+\vspace{0.1cm}
+
+\begin{exercise}
+    ¿Cuál es el dígito de las unidades de $1!+2!+3!+\cdots+2024!$?
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Demuestra que si $3\mid x^2+y^2$ entonces $3\mid x$ y $3\mid y$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Demuestra que ningún cuadrado perfecto es de la forma $\underbrace{11\cdots1}_{\text{Solo 1´s}}$
+\end{exercise}
+\begin{exercise}
+    Demuestra que $a-b\mid a^n-b^n$ para todo entero $n$
+\end{exercise}
+\vspace{0.1cm}
+\begin{exercise}
+    Demuestra que $a+b\mid a^n+b^n$ para todo entero $n$ impar
+\end{exercise}
+\vspace{0.1cm}
+
+\begin{example}[\href{https://artofproblemsolving.com/community/c6h2701544p23465654}{Regional del Sureste Mexico 2014/4}]
+Encuentra todas las pareja de enteros positivos $m$ y $n$ tales que
+\[n!+5=m^3\]
+\end{example}
+\begin{walkthrough} 
+\begin{walk}
+ \ii Si $n\geq 6$ entoces $9\mid n!$
+ \ii Entonces si analizamos la ecuación $\pmod 9$ debe suceder que
+ \[m^3\equiv 5\pmod 9\]
+    \ii  Analiza las congruencias de los primos $\pmod 6$
+    \ii Puedes hacer una tabla como la siguiente y darte cuenta que no existe $m$ tal que $m^3$ deje residuo $5$ al dividirse por $9$
+    \begin{center}
+    \begin{tabular}{c|c}
+        $m$ & $m^3$ \\ \hline 
+        0 & 0 \\
+        1 & 1\\
+        2 & 8\\
+        3& 0\\
+        4 & 1\\
+        5 & 8\\
+        6 & 0\\
+        7 & 1\\
+        8 & 8\\
+    \end{tabular}
+     \end{center}
+\end{walk}
+\end{walkthrough}
+
+\begin{example}
+[\href{https://artofproblemsolving.com/community/c6h1681983p10725395}{OMM 1990/3}]
+Prueba que $n^{n-1}-1$ es divisible por $(n-1)^2$ para toda $n > 2$
+\end{example}
+\begin{walkthrough} 
+\begin{walk}
+    \ii  Escribe a 
+    \[n^{n-1}-1=(n-1)(\left( n^{n-2}+n^{n-3}+\cdots n+1 \right)\]
+    \ii El primer término es $n-1$ entonces basta probar que $n-1$ divide a la suma larga
+    \ii Nota que $n\equiv 1\pmod n-1$
+\end{walk}
+\end{walkthrough}
+
+
+
+\section{Problemas}
+
+
+\Opensolutionfile{all-hints}
+
+\begin{problem}
+Demuestra que la ecuación $x^2-7=45y$ no tiene soluciones con $x,y\in \mathbb{Z}$
+
+  \begin{hint}
+  analiza los residuos de los cuadrados $\pmod 5$ y $\pmod 9$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+    Encuentra el último dígito de los siguiente números
+       \[\text{a)}2^{2023} \hspace{2cm} \text{b)}13^{13^{13}} \hspace{2cm} \text{c)}117^{117}\]
+       \begin{hint}
+           Simplificalo módulo $10$
+       \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra que para toda $n\in\mathbb{N}$
+    \[7\mid 3^{2n+1}+2^{n+2}\]
+    \begin{hint}
+        $3^{2n+1}\equiv 3\cdot \left(3^2\right)^{n}\equiv 3\cdot 2^n\pmod 7$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Se sabe que $2^{29}$ tiene $9$ dígitos distintos, ¿Cuál es el dígito que no tiene?
+    \begin{hint}
+        $2^29\equiv (1+2+\cdots 9)-x\pmod 9$ dónde $x$ es el dígito que falta
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra que para todo $n$ el número $n^5+4n$ es divisible por $5$
+\begin{hint}
+    Analiza cada residuo de $n$ y evaluálo en $n^5+4n$
+\end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+Demuestra que para todo primo $p>3$ se cumple que $24\mid p^2-1$
+    \begin{hint}
+        Puedes analizar los residuos que dejan los primos al dividirse entre $8$ y $3$ y luego analizar a $p^2-1$ en esos residuos. 
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Demuestra que $2023$ divide a la suma
+\[1^{2023}+2^{2023}+3^{2023}+\cdots 2021^{2023}+2022^{2023}\]
+    \begin{hint}
+        Junta el último sumando con el primero, el segundo con el penúltimo y así sucesivamente
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra los criterios de divisibilidad de $1$ al $11$ sin inculuir el del $7$
+    \begin{hint}
+         un número $n=\overline{a_ka_{k-1}a_{k-2}\cdots a_2a_1a_0}$ se puede escribir como $n=10^{k}a_k+10^{k-1}a_{k-1}+\cdots 10a_1+10^{0}a_0$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c5h404350p2254778}{USAJMO 2011/1}]
+Encuentre, con prueba, todos los números enteros positivos $n$ para los cuales $2^n + 12^n + 2011^n$ es un cuadrado perfecto.
+  \begin{hint}
+  analiza $\pmod 3$ y luego $\pmod 4$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    ¿Qué números se pueden ver como diferencia de dos cuadrados perfectos?
+    \begin{hint}
+        Usa $\pmod 4$ y da un ejemplo para los demás
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}[Freshman's dream]
+    Demuestra que para todos $a,b\in \mathbb{Z}$, y $p$ un primo se cumple que 
+    \[(a+b)^p\equiv a^p+b^p\]
+    \begin{hint}
+        Binomio de Newton
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h238569p1313424}{IMO 1964/1}]\phantom \\
+    \begin{walk}
+        \ii Encuentre todos los números enteros positivos $ n$ para los cuales $ 2^n-1$ es divisible por $ 7$.
+        \ii Demuestre que no existe un entero positivo $ n$ para el cual $ 2^n+1$ sea divisible por $ 7$.
+    \end{walk}
+ 
+\begin{hint}
+    Analiza a $n\pmod 3$ y mira que residuos que dejan las potencias de $2$ al dividirse por $7$
+\end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    [\href{https://artofproblemsolving.com/community/c6h60769p366557}{IMO 1986/1}]
+    Sea $d$ cualquier entero no igual a $2,5$ o $13$. Prueba que podemos escoger dos enteros distintos $a$ y $b$ en el conjunto $\{2,5,13,d\}$ tal que $ab-1$ no es un cuadrado perfecto
+    \begin{hint}
+        Asume que $2d-1$, $5d-1$, $13d-1$ son todos cuadrados, analízalos módulo $4$ y luegó mod $5$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra que $n\mid 2^{n!}-1$ para todo $n$ impar
+    \begin{hint}
+        Demuestra que existe un entero $d$ tal que $2^d\equiv 1\pmod n$ y $d\leq n$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h17324p29761813}{1 IMO SL/2002}]
+    ¿Cuál es el entero positivo más pequeño $t$ tal que existan enteros $x_1,x_2,\ldots,x_t$ con \[x^3_1+x^3_2+\,\ldots\,+x^3_t=2002^{2002} \,?\]
+    \begin{hint}
+        La respuesta es $t=4$ usa $\pmod 9$ para demostrar que $t\leq 4$ no es alcanzable
+    \end{hint}
+\end{problem}
+
+
+
+
+
+\bigskip
+
+\section{Hints}
+\Closesolutionfile{all-hints}
+\begin{enumerate}
+  \input{all-hints.out}
+\end{enumerate}
+
+
+\end{document}

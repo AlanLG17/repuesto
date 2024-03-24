@@ -1,0 +1,58 @@
+\begin{hintitem}{2.1}
+  analiza los residuos de los cuadrados $\pmod 5$ y $\pmod 9$
+  
+\end{hintitem}
+\begin{hintitem}{2.2}
+           Simplificalo módulo $10$
+       
+\end{hintitem}
+\begin{hintitem}{2.3}
+        $3^{2n+1}\equiv 3\cdot \left(3^2\right)^{n}\equiv 3\cdot 2^n\pmod 7$
+    
+\end{hintitem}
+\begin{hintitem}{2.4}
+        $2^29\equiv (1+2+\cdots 9)-x\pmod 9$ dónde $x$ es el dígito que falta
+    
+\end{hintitem}
+\begin{hintitem}{2.5}
+    Analiza cada residuo de $n$ y evaluálo en $n^5+4n$
+\end{hintitem}
+\begin{hintitem}{2.6}
+        Puedes analizar los residuos que dejan los primos al dividirse entre $8$ y $3$ y luego analizar a $p^2-1$ en esos residuos.
+    
+\end{hintitem}
+\begin{hintitem}{2.7}
+        Junta el último sumando con el primero, el segundo con el penúltimo y así sucesivamente
+    
+\end{hintitem}
+\begin{hintitem}{2.8}
+         un número $n=\overline{a_ka_{k-1}a_{k-2}\cdots a_2a_1a_0}$ se puede escribir como $n=10^{k}a_k+10^{k-1}a_{k-1}+\cdots 10a_1+10^{0}a_0$
+    
+\end{hintitem}
+\begin{hintitem}{2.9}
+  analiza $\pmod 3$ y luego $\pmod 4$
+  
+\end{hintitem}
+\begin{hintitem}{2.10}
+        Usa $\pmod 4$ y da un ejemplo para los demás
+    
+\end{hintitem}
+\begin{hintitem}{2.11}
+        Binomio de Newton
+    
+\end{hintitem}
+\begin{hintitem}{2.12}
+    Analiza a $n\pmod 3$ y mira que residuos que dejan las potencias de $2$ al dividirse por $7$
+\end{hintitem}
+\begin{hintitem}{2.13}
+        Asume que $2d-1$, $5d-1$, $13d-1$ son todos cuadrados, analízalos módulo $4$ y luegó mod $5$
+    
+\end{hintitem}
+\begin{hintitem}{2.14}
+        Demuestra que existe un entero $d$ tal que $2^d\equiv 1\pmod n$ y $d\leq n$
+    
+\end{hintitem}
+\begin{hintitem}{2.15}
+        La respuesta es $t=4$ usa $\pmod 9$ para demostrar que $t\leq 4$ no es alcanzable
+    
+\end{hintitem}

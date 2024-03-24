@@ -1,0 +1,66 @@
+\begin{hintitem}{3.1}
+  Divide el conjunto en $n$ conjuntos de modo que cada conjunto tenga dos elementos y su máximo común divisor sea $1$
+  
+\end{hintitem}
+\begin{hintitem}{3.2}
+       Cuántos vértices ocupan los $24$ triángulos
+   
+\end{hintitem}
+\begin{hintitem}{3.3}
+        La condición es equivalente a que su diferencia sea múltiplo de $11$(¿Por qué?)
+    
+\end{hintitem}
+\begin{hintitem}{3.4}
+    Asume que no se puede, considerate tres puntos en una misma línea del mismo color (¿Por qué existen?) y luego dibuja perpendiculares a esa recta con vértices en esos puntos, analiza las colores de los puntos de las paralelas a la primer línea
+    \begin{center}
+        \begin{asy}
+             size(6cm);
+            draw((0,0)--(2,0));
+            draw((0,0)--(0,2));
+            draw((1,0)--(1,2));
+            draw((2,0)--(2,2));
+            filldraw(circle((0,0),0.1), blue);
+            filldraw(circle((1,0),0.1), blue);
+            filldraw(circle((2,0),0.1), blue);
+            draw((0,0.4)--(2,0.4), dashed);
+            draw((0,0.8)--(2,0.8), dashed);
+            draw((0,1.2)--(2,1.2), dashed);
+            draw((0,1.6)--(2,1.6), dashed);
+        \end{asy}
+    \end{center}
+\end{hintitem}
+\begin{hintitem}{3.5}
+       Uno de esos triángulos equiláteros con lado menor que $1$ no puede cubrir simultáneamente dos vértices del otro triángulo
+    
+\end{hintitem}
+\begin{hintitem}{3.6}
+        Dentro de $4$ números hay $3$ con la misma paridad y hay $2$ que tienen el mismo residuo al dividirse entre $4$
+    
+\end{hintitem}
+\begin{hintitem}{3.7}
+         un número $n=\overline{a_ka_{k-1}a_{k-2}\cdots a_2a_1a_0}$ se puede escribir como $n=10^{k}a_k+10^{k-1}a_{k-1}+\cdots 10a_1+10^{0}a_0$
+    
+\end{hintitem}
+\begin{hintitem}{3.8}
+  analiza $\pmod 3$ y luego $\pmod 4$
+  
+\end{hintitem}
+\begin{hintitem}{3.9}
+        Binomio de Newton
+    
+\end{hintitem}
+\begin{hintitem}{3.10}
+    Analiza a $n\pmod 3$ y mira que residuos que dejan las potencias de $2$ al dividirse por $7$
+\end{hintitem}
+\begin{hintitem}{3.11}
+        Asume que $2d-1$, $5d-1$, $13d-1$ son todos cuadrados, analízalos módulo $4$ y luegó mod $5$
+    
+\end{hintitem}
+\begin{hintitem}{3.12}
+        Demuestra que existe un entero $d$ tal que $2^d\equiv 1\pmod n$ y $d\leq n$
+    
+\end{hintitem}
+\begin{hintitem}{3.13}
+        La respuesta es $t=4$ usa $\pmod 9$ para demostrar que $t\leq 4$ no es alcanzable
+    
+\end{hintitem}

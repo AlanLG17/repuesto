@@ -1,0 +1,629 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+
+
+\usepackage{answers}
+\Newassociation{hint}{hintitem}{all-hints}
+\renewcommand{\solutionextension}{out}
+\renewenvironment{hintitem}[1]{\item[\bfseries #1.]}{}
+
+\title{uuuuuuuuu}
+\author{AlanLG}
+\date{13 de Febrero 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+
+En matemáticas hay problemas que a pesar de que los intentas bastante, no llegas a una solución completa, luego te cuentan una idea para ese problema o la solución y te das cuenta que era una idea "simple" pero algo loca, en esta lista veremos algunos problemas que ayudan a construir esta intuición matemáticas que hace que se te ocurran estas ideas locas
+
+\begin{example}
+
+Tenemos $9$ monedas que lucen idénticas, pero una pesa menos que todas las demás, encuentra una forma de encontrar la que pesa menos usando una balanza solo $2$ veces
+\end{example}
+
+\begin{walkthrough} 
+\begin{walk}
+    \ii  Digamos que divides las $9$ monedas en bloques de $3$ monedas cada uno, ¿puedes encontrar el bloque donde está la moneda que pesa menos con solo un movimiento?
+\end{walk}
+\end{walkthrough}
+
+
+
+\begin{example}
+Halle el valor del producto
+
+$$\left(1-\frac{1}{4}\right)\left(1-\frac{1}{9}\right)\left(1-\frac{1}{16}\right)\cdots\left(1-\frac{1}{81}\right)$$
+
+\end{example}
+
+\begin{walkthrough} 
+ Hacer individualmente cada producto sería muy cansado, asi que vamos a pensar en algo más inteligente
+ \begin{walk}
+    \ii  !Factoriza!  
+    \ii Trata de cancelar numeradores y denominadores de forma inteligente
+\end{walk}
+\end{walkthrough}
+
+\begin{example}
+
+En cada casilla de un tablero de 7x7 hay un caballo. Hacemos que estos caballos se muevan simultaneamente. ¿Es posible que luego de que todos los caballos se hayan movido, no haya dos caballos en una misma casilla?
+
+
+\raggedright\footnotesize{\textbf{Nota:} El caballo se mueve dos casillas en dirección horizontal o vertical y después una casilla más en ángulo recto.}
+\end{example}
+\newpage
+\begin{walkthrough} 
+Es imposible
+ \begin{walk}
+    \ii  Coloreamos el tablero como si de un tablero de ajedrez se tratara
+    \begin{center}
+    
+\begin{asy}
+    size(4cm); 
+
+int n = 7; 
+real cellSize = 0.5; 
+
+void drawCell(pair topLeft, bool isBlack) {
+    filldraw(topLeft--(topLeft + (cellSize, 0))--(topLeft + (cellSize, -cellSize))--(topLeft + (0, -cellSize))--cycle, isBlack ? black : white, black);
+}
+
+for (int row = 0; row < n; ++row) {
+    for (int col = 0; col < n; ++col) {
+        pair topLeft = (col * cellSize, -row * cellSize);
+        bool isBlack = (row + col) % 2 == 1;
+        drawCell(topLeft, isBlack);
+    }
+}
+
+draw((0,0)--(n*cellSize,0)--(n*cellSize,-n*cellSize)--(0,-n*cellSize)--cycle); 
+\end{asy}
+\end{center}
+    \ii Nota que después de hacer cualquier movimiento con el caballo este cambia el color de casilla donde estaba.
+
+    \ii Pero hay 25 casillas blancas y 24 casillas blancas 
+
+    \ii Concluye
+\end{walk}
+\end{walkthrough}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+
+Las celdas en una carcél están númeradas del $1$ al $100$ y sus puertas se activan con un botón central. Este botón, al ser presionado, abre una puerta cerrada y cierra una puerta abierta. Se inicia con todas las puertas cerradas y el boton se presiona $100$ veces. Cuando el botón es presionado la $k$-ésima vez las puertas múltiplos de $k$ son activadas. ¿Qué puertas quedarán abiertas al final?
+\end{example}
+
+\begin{walkthrough} 
+Asegurate de entender bien el problema y haz casos pequeños
+ \begin{walk}
+    \ii  Haz una tabla como la siguiente, donde $1$ denota cuando una puerta está abierta y $0$ cuando está cerrada
+\begin{center}
+\begin{tabular}{ c | c  c  c  c  c  c c c }
+
+  & 1 & 2 & 3 & 4 & 5 & 6  &$\cdots$ & 100\\ \hline
+Inicio & 0 & 0 & 0 & 0 & 0 & 0 &$\cdots$ & 0 \\
+Primer Mov. & 1 & 1 & 1 & 1 & 1 & 1  &$\cdots$ & 1 \\
+Segundo Mov. & 1 & 0 & 1 & 0 & 1 & 0  &$\cdots$ & 0 \\
+Tercer Mov. & 1 & 0 & 0 & 0 & 1 & 1 &$\cdots$ & 0 \\
+Cuarto Mov. & 1 & 0 & 0 & 1 & 1 & 1 &$\cdots$ & 1 \\
+Quinto Mov. & 1 & 0 & 0 & 1 & 0 & 1 &$\cdots$ & 0\\
+Sexto Mov. & 1 & 0 & 0 & 1 & 0 & 0 &$\cdots$ & 0 \\ 
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ &$\vdots$ & $\vdots$ &$\ddots$& $\vdots$ \\
+
+\end{tabular}
+\end{center}
+     \ii En lugar de mirar cada movimiento (por fila) mira cada número (columna).
+    \ii Por ejemplo el $6$ cambia de estado solo cuando el número del movimiento divide a $6$, o sea en el movimiento $1,2,3$ y $6$, entonces el $6$ queda en $0\rightarrow 1\rightarrow 0\rightarrow 1\rightarrow 0$ y ya nunca cambia nuevamente de estado.
+    \ii Entonces el número $n$ cambia de estado $d(n)$ veces
+    \ii Comprueba que si $d(n)$ es impar entonces la puerta $n$ queda abierta, y si $d(n)$ es impar queda cerrada
+    \ii ¡Basta ver cuándo $d(n)$ es impar!
+\end{walk}
+\end{walkthrough}
+
+\section{Problemas}
+Note que los problemas abajo pueden no usar conceptos complejos de algún área sin embargo las ideas que tienen no son simples y requiere que entiendas bien cada problema y los intentes lo suficiente.
+
+\Opensolutionfile{all-hints}
+
+
+\begin{problem}
+[Clásico] Ana y Beto participan en un juego por turnos donde empieza Ana, en el juego hay $15$ fichas y en cada turno cada jugador puede quitar $1$ ó $2$ fichas, pierde el que quite la última ficha. Demuestra sin importar como juegue Ana, Beto tiene estrategia ganadora.
+  \begin{hint}
+  Demuestra que el que mueve cuando hay un número de fichas múltiplo de $3$  tiene estrategia perdedora (empieza viendo que pasa con el que le toca mover cuando hay $3$ fichas)
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+
+Se tiene el siguiente disco con los números escritos en el, un movimiento consiste en sumar 1 a dos sectores adyacentes, ¿se puede lograr que después de algunos movimientos los números en cada sector sean iguales?
+\begin{center}
+     \begin{asy}
+import graph;
+unitsize(0.8cm);
+
+real radius = 2;
+pair center = (0, 0);
+
+// Dibuja el círculo
+draw(Circle(center, radius),white);
+
+// Números que deseas colocar
+string[] numeros = {"1", "0", "0", "0", "1", "0"};
+
+// Ángulo inicial
+real startAngle = 0;
+
+for (int i = 0; i < 6; ++i) {
+    real endAngle = startAngle + 60; // Divide el círculo en 6 partes iguales (360 grados / 6)
+    pair labelPosition = center + radius/2*dir(startAngle + 30); // Coloca el número en el centro del sector
+    
+    // Dibuja el sector
+    filldraw(center--arc(center, radius, startAngle, endAngle)--cycle, gray(0.9));
+    
+    // Coloca el número en el sector
+    label(numeros[i], labelPosition);
+    
+    // Actualiza el ángulo inicial para el siguiente sector
+    startAngle = endAngle;
+}
+
+// Ajusta la vista
+real margin = 0.5;
+limits((-radius-margin,-radius-margin),(radius+margin,radius+margin), Crop);
+   \end{asy}
+\end{center}
+\begin{hint}
+Colorea cada sector intercaladamente de blanco y negro, y la suma de números en casillas blancas y negras
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c5h2765743p24218156}{AMC 8/2022}]
+La siguiente cuadrícula debe llenarse con números enteros de tal manera que la suma de los números en cada fila y la suma de los números en cada columna sean iguales. Faltan cuatro números. El número $x$ en la esquina inferior izquierda es mayor que los otros tres números que faltan. ¿Cuál es el valor más pequeño posible de $x$?
+\begin{center}
+    \begin{asy}
+        unitsize(0.5cm);
+draw((3,3)--(-3,3));
+draw((3,1)--(-3,1));
+draw((3,-3)--(-3,-3));
+draw((3,-1)--(-3,-1));
+draw((3,3)--(3,-3));
+draw((1,3)--(1,-3));
+draw((-3,3)--(-3,-3));
+draw((-1,3)--(-1,-3));
+label((-2,2),"$-2$");
+label((0,2),"$9$");
+label((2,2),"$5$");
+label((2,0),"$-1$");
+label((2,-2),"$8$");
+label((-2,-2),"$x$");
+
+    \end{asy}
+\end{center}
+  \begin{hint}
+ Demuestra que hay un número en la segunda fila que es mayor que $7$ 
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+A un tablero de $8\times 8$ se le retiran dos esquinas opuestas. ¿Puede cubrirse el tablero con 31 dóminos (rectángulos de $2\times 1$)?
+
+    \begin{center}
+        
+\begin{asy}
+    /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(6.5cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.1) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -3.171616439522652, xmax = 17.67767285771389, ymin = -2.3293680669626107, ymax = 10.333697211727069;  /* image dimensions */
+
+ /* draw figures */
+draw((1,0)--(1,8), linewidth(1)); 
+draw((2,8)--(2,0), linewidth(1)); 
+draw((3,0)--(3,8), linewidth(1)); 
+draw((4,8)--(4,0), linewidth(1)); 
+draw((5,0)--(5,8), linewidth(1)); 
+draw((6,8)--(6,0), linewidth(1)); 
+draw((7,0)--(7,8), linewidth(1)); 
+draw((8,7)--(0,7), linewidth(1)); 
+draw((0,6)--(8,6), linewidth(1)); 
+draw((0,5)--(8,5), linewidth(1)); 
+draw((8,4)--(0,4), linewidth(1)); 
+draw((0,3)--(8,3), linewidth(1)); 
+draw((8,2)--(0,2), linewidth(1)); 
+draw((0,1)--(8,1), linewidth(1)); 
+draw((1,8)--(8,8), linewidth(1)); 
+draw((8,8)--(8,1), linewidth(1)); 
+draw((7,0)--(0,0), linewidth(1)); 
+draw((0,0)--(0,7), linewidth(1)); 
+draw((10,3)--(10,5), linewidth(1)); 
+draw((10,5)--(11,5), linewidth(1)); 
+draw((11,5)--(11,3), linewidth(1)); 
+draw((10,3)--(11,3), linewidth(1)); 
+draw((10,4)--(11,4), linewidth(1)); 
+ /* dots and labels */
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
+\end{asy}
+\end{center}
+
+  \begin{hint}
+    ¡Ajedrez!
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}[\href{https://artofproblemsolving.com/community/c5h1802364p11973054}{AIME/2019}]
+Considere el número
+\[N=9+99+999+\cdots+\underbrace{99\cdots9}_{321}\]
+Encuentra la suma de dígitos de $N$
+  \begin{hint}
+    $N=\left(10^1-1\right)+\left(10^2-1\right)+\left(10^3-1\right)+\cdots+\left(10^{321}-1\right)$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Se hará un torneo de eliminación directa con $n$ equipos donde en cada ronda se emparejan los equipos y por cada pareja solo uno pasará a la siguiente ronda, ¿Cuántos partidos se juegan?
+\begin{center}
+    \begin{asy}
+    import graph; size(7cm); 
+        pen dotstyle = black; /* point style */ 
+real xmin = -3.8792536744460278, xmax = 45.532324858144285, ymin = -6.160303097545396, ymax = 23.850410244334466;  /* image dimensions */
+
+ /* draw figures */
+draw((2,18)--(6,18), linewidth(1.2)); 
+draw((6,18)--(6,20), linewidth(1.2)); 
+draw((6,20)--(2,20), linewidth(1.2)); 
+draw((2,16)--(6,16), linewidth(1.2)); 
+draw((2,14)--(6,14), linewidth(1.2)); 
+draw((2,12)--(6,12), linewidth(1.2)); 
+draw((2,10)--(6,10), linewidth(1.2)); 
+draw((2,8)--(6,8), linewidth(1.2)); 
+draw((2,6)--(6,6), linewidth(1.2)); 
+draw((2,4)--(6,4), linewidth(1.2)); 
+draw((2,2)--(6,2), linewidth(1.2)); 
+draw((6,2)--(6,4), linewidth(1.2)); 
+draw((6,6)--(6,8), linewidth(1.2)); 
+draw((6,10)--(6,12), linewidth(1.2)); 
+draw((6,14)--(6,16), linewidth(1.2)); 
+draw((6,19)--(9,19), linewidth(1.2)); 
+draw((6,15)--(9,15), linewidth(1.2)); 
+draw((6,11)--(9,11), linewidth(1.2)); 
+draw((6,7)--(9,7), linewidth(1.2)); 
+draw((6,3)--(9,3), linewidth(1.2)); 
+draw((9,3)--(12,3), linewidth(1.2)); 
+draw((9,7)--(12,7), linewidth(1.2)); 
+draw((9,11)--(12,11), linewidth(1.2)); 
+draw((9,15)--(12,15), linewidth(1.2)); 
+draw((9,19)--(12,19), linewidth(1.2)); 
+draw((12,3)--(12,7), linewidth(1.2)); 
+draw((12,11)--(12,15), linewidth(1.2)); 
+draw((12,19)--(12,18), linewidth(0.8)); 
+draw((12,18)--(18,18), linewidth(1.2)); 
+draw((12,11)--(18,11), linewidth(1.2)); 
+draw((12,4)--(18,4), linewidth(1.2)); 
+draw((18,4)--(18,11), linewidth(1.2)); 
+draw((18,18)--(18,16), linewidth(0.8)); 
+draw((18,16)--(24,16), linewidth(1.2)); 
+draw((18,6)--(24,6), linewidth(1.2)); 
+draw((24,6)--(24,16), linewidth(1.2)); 
+draw((24,11)--(30,11), linewidth(1.2)); 
+ /* dots and labels */
+dot((2,2),dotstyle); 
+dot((2,4),dotstyle); 
+dot((2,6),dotstyle); 
+dot((2,8),dotstyle); 
+dot((2,10),dotstyle); 
+dot((2,12),dotstyle); 
+dot((2,14),dotstyle); 
+dot((2,16),dotstyle); 
+dot((2,18),dotstyle); 
+dot((2,20),dotstyle); 
+dot((9,19),dotstyle); 
+dot((9,15),dotstyle); 
+dot((9,11),dotstyle); 
+dot((9,7),dotstyle); 
+dot((9,3),dotstyle); 
+dot((30,11),linewidth(4pt) + dotstyle); 
+dot((15,11),linewidth(4pt) + dotstyle); 
+dot((15,18),linewidth(4pt) + dotstyle); 
+dot((15,4),linewidth(4pt) + dotstyle); 
+dot((21,6),linewidth(4pt) + dotstyle); 
+dot((21,16),linewidth(4pt) + dotstyle); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
+    \end{asy}
+    
+    $(\text{Caso}\hspace{0.1cm} n=10)$
+\end{center}
+\begin{hint}
+La idea es muy simple, hay tantos partidos jugados como ...
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+Determina si el número $2^{2014}+1007^4$ es un número primo o no
+  \begin{hint}
+ Trata de probar que $5$ divide al número
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[Clásico] Demuestra que en una fiesta de $n$ personas siempre hay dos personas conocen a el mismo número de personas dentro de la fiesta
+  \begin{hint}
+  El número de conocidos que puede tener alguien varía entre $0,1,2,\ldots, n-1$, pero si hay alguien que conoce a $0$ no puede haber alguien que conozca $n-1$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Se tienen $n$ cartas todas mirando hacia arriba, un movimiento consiste en tomar una carta que este mirando hacia arriba, ponerla mirando hacia abajo, y girar la carta que está justo a su derecha. Demuestra que independientemente de la secuencia de movimientos elegida, al final todas las cartas estarán mirando abajo.
+  \begin{hint}
+ Llama $0$ si una carta está mirandohacia abajo y $1$ si está mirando hacia arriba, observa cada caso al hacer un movimiento (por ejemplo $101\boxed{10}11\rightarrow 101\boxed{01}11$) y trata de observar un patrón
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h3194066p29146566}{OMM 2023/1}]Encuentre todos los números de cuatro dígitos tal que la suma de los cuadrados de sus dígitos es igual al doble de la suma de sus dígitos
+\begin{hint}
+Si el número es $\overline{abcd}$ entonces 
+\begin{center}
+    $(a-1)^2+(b-1)^2+(c-1)^2+(d-1)^2=4$
+\end{center}
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+
+\begin{problem}
+Se muestran $3$ cuadrados juntos, halla el valor de $\alpha+\beta+\gamma$
+\begin{center}
+    \begin{asy}
+import graph; size(7cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -1.5022238918106643, xmax = 13.19349361382421, ymin = -3.3374755822689712, ymax = 5.588144252441777;  /* image dimensions */
+pen qqwuqq = rgb(0,0.39215686274509803,0); 
+
+draw(arc((0,0),0.45078888054094707,0,18.43494882292201)--(0,0)--cycle, linewidth(2) + qqwuqq); 
+draw(arc((3,0),0.45078888054094707,0,26.56505117707799)--(3,0)--cycle, linewidth(2) + blue); 
+draw(arc((6,0),0.45078888054094707,0,45)--(6,0)--cycle, linewidth(2) + red); 
+ /* draw figures */
+draw((9,0)--(9,3), linewidth(0.8)); 
+draw((9,3)--(0,3), linewidth(0.8)); 
+draw((0,3)--(0,0), linewidth(0.8)); 
+draw((0,0)--(9,0), linewidth(0.8)); 
+draw((6,0)--(6,3), linewidth(0.4)); 
+draw((3,0)--(3,3), linewidth(0.4)); 
+draw((0,0)--(9,3), linewidth(0.8)); 
+draw((3,0)--(9,3), linewidth(0.8)); 
+draw((6,0)--(9,3), linewidth(0.8)); 
+ /* dots and labels */
+label("$\alpha$", (0.8268519909842289,0.07349361382419352), NE * labelscalefactor,qqwuqq); 
+label("$\beta$", (3.71190082644629,0), NE * labelscalefactor,blue); 
+label("$\gamma$", (6.611975957926383,0.17867768595041444), NE * labelscalefactor,red); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
+  \end{asy}
+\end{center}
+\begin{hint}
+Hay dos triángulos semejantes algo ocultos ¡Búscalos!
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+
+Evalúe la suma
+\[\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\frac{1}{3\cdot 4}+\cdots+\frac{1}{2022\cdot 2023}+\frac{1}{2023\cdot 2024}\]
+\begin{hint}
+Nota que $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+Encuentra todos los enteros positivos $m,n$ tales que
+\[mn+m+n=26\]
+  \begin{hint}
+    Suma $1$ de ambos lado y trata de factorizar el lado izquierdo
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+
+¿Es posible poner los símbolos $+$, $-$ a todos los números del $1$ al $20$ de manera
+que al hacer la operación se obtenga 13?
+\[ \boxed{?}\hspace{0.1cm}1+\boxed{?}\hspace{0.1cm}2+\boxed{?}\hspace{0.1cm}3+\cdots+\boxed{?}\hspace{0.1cm}19+\boxed{?}\hspace{0.1cm}20=13 \]
+
+  \begin{hint}
+  La paridad de la suma se mantiene
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+
+
+
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h3137863}{Regional del Sureste Mexico 2023/1}]
+Víctor escribe todos los números de $7$ dígitos usando los dígitos $1, 2, 3, 4, 5, 6,$ y $7$ exactamente una vez. Demuestre que no hay dos números tal que uno sea el doble del otro
+  \begin{hint}
+    El residuo al dividir cualquiera de los números entre $9$ es constante
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://chiuchang.org/wp-content/uploads/sites/2/2018/01/2016_TIMC_Keystage_III_Team_Final.x17381.pdf}{IWYMIC 2016, PE/7}]Sean $x,y,z$ números reales positivos tales que 
+\[\sqrt{16-x^2}+\sqrt{25-y^2}+\sqrt{36-z^2}=12\]
+Si $x+y+z=9$, encuentra el valor de $xyz$
+  \begin{hint}
+  Analiza el siguiente diagrama (no está a escala)
+    \begin{center}
+    
+        \begin{asy}
+               /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(10cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -2.5574466610148305, xmax = 22.408702112987903, ymin = -2.3704528375768956, ymax = 12.793036295099617;  /* image dimensions */
+pen qqwwzz = rgb(0,0.4,0.6); 
+
+draw((3.844277215719534,8.894770300480635)--(0,8.894770300480637)--(0,10)--cycle, linewidth(0.8) + qqwwzz); 
+draw((3.844277215719534,8.894770300480635)--(3.8442772157195346,6.132076130015509)--(8.011712988527318,6.132076130015509)--cycle, linewidth(0.8) + qqwwzz); 
+draw((8.011712988527318,6.132076130015509)--(8.011712988527318,1.9060857768674797)--(12.270938919973053,1.9060857768674797)--cycle, linewidth(0.8) + qqwwzz); 
+draw((0.27076277757990097,8.894770300480637)--(0.27076277757990114,9.165533078060538)--(0,9.165533078060538)--(0,8.894770300480637)--cycle, linewidth(0.4) + blue); 
+draw((4.115039993299436,6.132076130015509)--(4.115039993299436,6.40283890759541)--(3.8442772157195346,6.40283890759541)--(3.8442772157195346,6.132076130015509)--cycle, linewidth(0.4) + blue); 
+draw((8.282475766107218,1.9060857768674797)--(8.282475766107218,2.1768485544473806)--(8.011712988527318,2.1768485544473806)--(8.011712988527318,1.9060857768674797)--cycle, linewidth(0.4) + blue); 
+draw((0.27076277757990097,1.9060857768674797)--(0.270762777579901,2.1768485544473806)--(0,2.1768485544473806)--(0,1.9060857768674797)--cycle, linewidth(0.4) + blue); 
+ /* draw figures */
+draw((3.844277215719534,8.894770300480635)--(0,8.894770300480637), linewidth(0.8) + qqwwzz); 
+draw((0,8.894770300480637)--(0,10), linewidth(0.8) + qqwwzz); 
+draw((0,10)--(3.844277215719534,8.894770300480635), linewidth(0.8) + qqwwzz); 
+draw((3.844277215719534,8.894770300480635)--(3.8442772157195346,6.132076130015509), linewidth(0.8) + qqwwzz); 
+draw((3.8442772157195346,6.132076130015509)--(8.011712988527318,6.132076130015509), linewidth(0.8) + qqwwzz); 
+draw((8.011712988527318,6.132076130015509)--(3.844277215719534,8.894770300480635), linewidth(0.8) + qqwwzz); 
+draw((8.011712988527318,6.132076130015509)--(8.011712988527318,1.9060857768674797), linewidth(0.8) + qqwwzz); 
+draw((8.011712988527318,1.9060857768674797)--(12.270938919973053,1.9060857768674797), linewidth(0.8) + qqwwzz); 
+draw((12.270938919973053,1.9060857768674797)--(8.011712988527318,6.132076130015509), linewidth(0.8) + qqwwzz); 
+draw((0,10)--(0,1.9060857768674797), linewidth(0.4)); 
+draw((0,1.9060857768674797)--(12.270938919973053,1.9060857768674797), linewidth(0.4)); 
+ /* dots and labels */
+dot((0,10),linewidth(1pt) + dotstyle); 
+dot((3.844277215719534,8.894770300480635),linewidth(1pt) + dotstyle); 
+dot((8.011712988527318,6.132076130015509),linewidth(1pt) + dotstyle); 
+dot((12.270938919973053,1.9060857768674797),linewidth(1pt) + dotstyle); 
+label("$x$", (1.5269948562044304,8.325678385641048), NE * labelscalefactor,qqwwzz); 
+label("$4$", (1.7822724510306343,9.75523291666779), NE * labelscalefactor,qqwwzz); 
+label("$y$", (5.432742057045349,5.568680361518046), NE * labelscalefactor,qqwwzz); 
+label("$5$", (6.1219915630761,7.713012158058159), NE * labelscalefactor,qqwwzz); 
+label("$z$", (9.874572207021295,1.305544527920441), NE * labelscalefactor,qqwwzz); 
+label("$6$", (10.308544118225843,4.190181349456545), NE * labelscalefactor,qqwwzz); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+ /* end of picture */
+        \end{asy}
+    \end{center}
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h598666p3552739}{OMM 2008/1}]
+Sean $1=d_1<d_2<d_3<\dots<d_k=n$ los divisores de $n$. Encuentra todos los valores de $n$ tales que $n=d_2^2+d_3^3$
+
+\begin{hint}
+    $d_2$ es primo (¿Por qué?) Analiza la paridad de $n, d_2$ y $d_3$
+    \end{hint}
+    \end{problem}
+    \vspace{0.1cm}
+\begin{problem}[\href{https://artofproblemsolving.com/community/c5h1802364p11973054}{OMMEB 2022/15}]
+En la figura se observan tres triángulos equiláteros $ABD, BEF$ y $BCG$, cuyos lados miden $4 \operatorname{cm}, 2 \operatorname{cm}$ y $1 \operatorname{cm}$, respectivamente. Los puntos $P, Q$ y $R$ son los centros de dichos triángulos equiláteros, en ese orden.
+\begin{walk}
+    \ii Determina la medida, en grados, de todos los ángulos internos del cuadrilátero $PQRB$.
+
+    \ii Calcula el área en $\operatorname{cm}^2$ del cuadrilátero $PQRB$
+\end{walk}
+\begin{center}
+    \begin{asy}
+        /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(7cm); 
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+pen dotstyle = black; /* point style */ 
+real xmin = -2.1538661547763653, xmax = 9.288627123027853, ymin = -2.1122751207997044, ymax = 4.83746006019793;  /* image dimensions */
+
+
+draw((0,0)--(4,0)--(2,3.4641016151377544)--cycle, linewidth(0.4)); 
+draw((4,0)--(5,1.7320508075688776)--(3,1.7320508075688776)--cycle, linewidth(0.4)); 
+draw((4,0)--(5,0)--(4.5,0.8660254037844386)--cycle, linewidth(0.4)); 
+draw((4,0)--(2,1.1547005383792517)--(4,1.1547005383792515)--(4.5,0.2886751345948129)--cycle, linewidth(0.4)); 
+ /* draw figures */
+draw((0,0)--(4,0), linewidth(0.4)); 
+draw((4,0)--(2,3.4641016151377544), linewidth(0.4)); 
+draw((2,3.4641016151377544)--(0,0), linewidth(0.4)); 
+draw((4,0)--(5,1.7320508075688776), linewidth(0.4)); 
+draw((5,1.7320508075688776)--(3,1.7320508075688776), linewidth(0.4)); 
+draw((3,1.7320508075688776)--(4,0), linewidth(0.4)); 
+draw((4,0)--(5,0), linewidth(0.4)); 
+draw((5,0)--(4.5,0.8660254037844386), linewidth(0.4)); 
+draw((4.5,0.8660254037844386)--(4,0), linewidth(0.4)); 
+draw((4,0)--(2,1.1547005383792517), linewidth(0.4)); 
+draw((2,1.1547005383792517)--(4,1.1547005383792515), linewidth(0.4)); 
+draw((4,1.1547005383792515)--(4.5,0.2886751345948129), linewidth(0.4)); 
+draw((4.5,0.2886751345948129)--(4,0), linewidth(0.4)); 
+ /* dots and labels */
+dot((0,0),linewidth(4pt) + dotstyle); 
+label("$A$", (-0.04788579689828875,-0.263692362217842), NE * labelscalefactor); 
+dot((4,0),dotstyle); 
+label("$B$", (3.941776992192956,-0.263692362217842), NE * labelscalefactor); 
+dot((2,3.4641016151377544),linewidth(4pt) + dotstyle); 
+label("$D$", (1.9410956522087837,3.608971518102389), NE * labelscalefactor); 
+dot((5,1.7320508075688776),linewidth(4pt) + dotstyle); 
+label("$F$", (5.041566734640396,1.8305881047831287), NE * labelscalefactor); 
+dot((3,1.7320508075688776),dotstyle); 
+label("$E$", (3.0525852855333238,1.8539878865373296), NE * labelscalefactor); 
+dot((5,0),linewidth(4pt) + dotstyle); 
+label("$C$", (4.947967607623593,-0.2519924713407416), NE * labelscalefactor); 
+dot((4.5,0.8660254037844386),dotstyle); 
+label("$G$", (4.643770444818982,0.8828969437379968), NE * labelscalefactor); 
+dot((2,1.1547005383792517),linewidth(4pt) + dotstyle); 
+label("$P$", (2.0463946701026874,1.245593560928109), NE * labelscalefactor); 
+dot((4,1.1547005383792515),linewidth(4pt) + dotstyle); 
+label("$Q$", (4.04707601008686,1.245593560928109), NE * labelscalefactor); 
+dot((4.5,0.2886751345948129),linewidth(4pt) + dotstyle); 
+label("$R$", (4.561871208679279,0.18090349111197304), NE * labelscalefactor); 
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+filldraw ( (2,1.1547005383792517)--(4,1.1547005383792515)--(4.5,0.2886751345948129)--(4,0)--cycle , lightgrey ) ;
+ /* end of picture */
+    \end{asy}
+\end{center}
+  \begin{hint}
+   Toma un punto dentro de $P,Q,R$, y con centro $B$ rota $30^\circ$ y multiplica por $\sqrt3$, el cuadrilátero $PQRB$ se va al $AEGB$ después de hacer esta transformación
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Sean $a,b,c,d$ números reales tales que $a^2+b^2=c^2+d^2=1$ y $ac+bd=0$. Determine el valor de $ab+cd$
+  \begin{hint}
+    ¿Quién siempre cumple $x^2+y^2=1$? \hspace{1cm}\tiny{$\sin\alpha$ y $\cos \alpha$}
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+
+\newpage 
+\bigskip
+
+\section{Hints}
+\Closesolutionfile{all-hints}
+\begin{enumerate}
+  \input{all-hints.out}
+\end{enumerate}
+
+
+\end{document}

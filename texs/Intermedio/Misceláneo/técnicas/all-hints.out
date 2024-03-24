@@ -1,0 +1,124 @@
+\begin{hintitem}{2.1}
+  Demuestra que el que mueve cuando hay un número de fichas múltiplo de $3$  tiene estrategia perdedora (empieza viendo que pasa con el que le toca mover cuando hay $3$ fichas)
+  
+\end{hintitem}
+\begin{hintitem}{2.2}
+Colorea cada sector intercaladamente de blanco y negro, y la suma de números en casillas blancas y negras
+  
+\end{hintitem}
+\begin{hintitem}{2.3}
+ Demuestra que hay un número en la segunda fila que es mayor que $7$
+  
+\end{hintitem}
+\begin{hintitem}{2.4}
+    ¡Ajedrez!
+  
+\end{hintitem}
+\begin{hintitem}{2.5}
+    $N=\left(10^1-1\right)+\left(10^2-1\right)+\left(10^3-1\right)+\cdots+\left(10^{321}-1\right)$
+  
+\end{hintitem}
+\begin{hintitem}{2.6}
+La idea es muy simple, hay tantos partidos jugados como ...
+  
+\end{hintitem}
+\begin{hintitem}{2.7}
+ Trata de probar que $5$ divide al número
+  
+\end{hintitem}
+\begin{hintitem}{2.8}
+  El número de conocidos que puede tener alguien varía entre $0,1,2,\ldots, n-1$, pero si hay alguien que conoce a $0$ no puede haber alguien que conozca $n-1$
+  
+\end{hintitem}
+\begin{hintitem}{2.9}
+ Llama $0$ si una carta está mirandohacia abajo y $1$ si está mirando hacia arriba, observa cada caso al hacer un movimiento (por ejemplo $101\boxed{10}11\rightarrow 101\boxed{01}11$) y trata de observar un patrón
+  
+\end{hintitem}
+\begin{hintitem}{2.10}
+Si el número es $\overline{abcd}$ entonces
+\begin{center}
+    $(a-1)^2+(b-1)^2+(c-1)^2+(d-1)^2=4$
+\end{center}
+  
+\end{hintitem}
+\begin{hintitem}{2.11}
+Hay dos triángulos semejantes algo ocultos ¡Búscalos!
+  
+\end{hintitem}
+\begin{hintitem}{2.12}
+Nota que $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$
+  
+\end{hintitem}
+\begin{hintitem}{2.13}
+    Suma $1$ de ambos lado y trata de factorizar el lado izquierdo
+  
+\end{hintitem}
+\begin{hintitem}{2.14}
+  La paridad de la suma se mantiene
+  
+\end{hintitem}
+\begin{hintitem}{2.15}
+    El residuo al dividir cualquiera de los números entre $9$ es constante
+  
+\end{hintitem}
+\begin{hintitem}{2.16}
+  Analiza el siguiente diagrama (no está a escala)
+    \begin{center}
+
+        \begin{asy}
+               /* Geogebra to Asymptote conversion, documentation at artofproblemsolving.com/Wiki go to User:Azjps/geogebra */
+import graph; size(10cm);
+real labelscalefactor = 0.5; /* changes label-to-point distance */
+pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */
+pen dotstyle = black; /* point style */
+real xmin = -2.5574466610148305, xmax = 22.408702112987903, ymin = -2.3704528375768956, ymax = 12.793036295099617;  /* image dimensions */
+pen qqwwzz = rgb(0,0.4,0.6);
+
+draw((3.844277215719534,8.894770300480635)--(0,8.894770300480637)--(0,10)--cycle, linewidth(0.8) + qqwwzz);
+draw((3.844277215719534,8.894770300480635)--(3.8442772157195346,6.132076130015509)--(8.011712988527318,6.132076130015509)--cycle, linewidth(0.8) + qqwwzz);
+draw((8.011712988527318,6.132076130015509)--(8.011712988527318,1.9060857768674797)--(12.270938919973053,1.9060857768674797)--cycle, linewidth(0.8) + qqwwzz);
+draw((0.27076277757990097,8.894770300480637)--(0.27076277757990114,9.165533078060538)--(0,9.165533078060538)--(0,8.894770300480637)--cycle, linewidth(0.4) + blue);
+draw((4.115039993299436,6.132076130015509)--(4.115039993299436,6.40283890759541)--(3.8442772157195346,6.40283890759541)--(3.8442772157195346,6.132076130015509)--cycle, linewidth(0.4) + blue);
+draw((8.282475766107218,1.9060857768674797)--(8.282475766107218,2.1768485544473806)--(8.011712988527318,2.1768485544473806)--(8.011712988527318,1.9060857768674797)--cycle, linewidth(0.4) + blue);
+draw((0.27076277757990097,1.9060857768674797)--(0.270762777579901,2.1768485544473806)--(0,2.1768485544473806)--(0,1.9060857768674797)--cycle, linewidth(0.4) + blue);
+ /* draw figures */
+draw((3.844277215719534,8.894770300480635)--(0,8.894770300480637), linewidth(0.8) + qqwwzz);
+draw((0,8.894770300480637)--(0,10), linewidth(0.8) + qqwwzz);
+draw((0,10)--(3.844277215719534,8.894770300480635), linewidth(0.8) + qqwwzz);
+draw((3.844277215719534,8.894770300480635)--(3.8442772157195346,6.132076130015509), linewidth(0.8) + qqwwzz);
+draw((3.8442772157195346,6.132076130015509)--(8.011712988527318,6.132076130015509), linewidth(0.8) + qqwwzz);
+draw((8.011712988527318,6.132076130015509)--(3.844277215719534,8.894770300480635), linewidth(0.8) + qqwwzz);
+draw((8.011712988527318,6.132076130015509)--(8.011712988527318,1.9060857768674797), linewidth(0.8) + qqwwzz);
+draw((8.011712988527318,1.9060857768674797)--(12.270938919973053,1.9060857768674797), linewidth(0.8) + qqwwzz);
+draw((12.270938919973053,1.9060857768674797)--(8.011712988527318,6.132076130015509), linewidth(0.8) + qqwwzz);
+draw((0,10)--(0,1.9060857768674797), linewidth(0.4));
+draw((0,1.9060857768674797)--(12.270938919973053,1.9060857768674797), linewidth(0.4));
+ /* dots and labels */
+dot((0,10),linewidth(1pt) + dotstyle);
+dot((3.844277215719534,8.894770300480635),linewidth(1pt) + dotstyle);
+dot((8.011712988527318,6.132076130015509),linewidth(1pt) + dotstyle);
+dot((12.270938919973053,1.9060857768674797),linewidth(1pt) + dotstyle);
+label("$x$", (1.5269948562044304,8.325678385641048), NE * labelscalefactor,qqwwzz);
+label("$4$", (1.7822724510306343,9.75523291666779), NE * labelscalefactor,qqwwzz);
+label("$y$", (5.432742057045349,5.568680361518046), NE * labelscalefactor,qqwwzz);
+label("$5$", (6.1219915630761,7.713012158058159), NE * labelscalefactor,qqwwzz);
+label("$z$", (9.874572207021295,1.305544527920441), NE * labelscalefactor,qqwwzz);
+label("$6$", (10.308544118225843,4.190181349456545), NE * labelscalefactor,qqwwzz);
+clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle);
+ /* end of picture */
+        \end{asy}
+    \end{center}
+  
+\end{hintitem}
+\begin{hintitem}{2.17}
+    $d_2$ es primo (¿Por qué?) Analiza la paridad de $n, d_2$ y $d_3$
+    
+\end{hintitem}
+\begin{hintitem}{2.18}
+   Toma un punto dentro de $P,Q,R$, y con centro $B$ rota $30^\circ$ y multiplica por $\sqrt3$, el cuadrilátero $PQRB$ se va al $AEGB$ después de hacer esta transformación
+  
+\end{hintitem}
+\begin{hintitem}{2.19}
+    ¿Quién siempre cumple $x^2+y^2=1$? \hspace{1cm}\tiny{$\sin\alpha$ y $\cos \alpha$}
+  
+\end{hintitem}

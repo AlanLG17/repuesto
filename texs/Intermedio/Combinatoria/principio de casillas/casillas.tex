@@ -1,0 +1,304 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\usepackage{amsthm}
+\renewcommand{\proofname}{Prueba}
+
+
+\usepackage{answers}
+\Newassociation{hint}{hintitem}{all-hints}
+\renewcommand{\solutionextension}{out}
+\renewenvironment{hintitem}[1]{\item[\bfseries #1.]}{}
+
+\title{Principio de casillas}
+
+
+\author{AlanLG}
+\date{Febrero 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Lectura}
+Principio de casillas es algo muy intuitivo pero que puede ser muy útil al momento de resolver algunos problemas de matemáticas, vamos a comenzar con un simple ejemplo 
+\begin{example}
+    Tienes un saco con manzanas rojas y manzanas verdes, ¿Cúal es el mínimo número de manzanas que debes sacar de la bolsa para gantizar que sacaste dos de un mismo color?
+\end{example}
+\begin{flushleft}
+    
+
+Si sacas $2$ manzanas puede que ambas sean de distinto color pero al momento de sacar una más a fuerzas será de algún color que ya se repitió, de modo que necesitas $3$ manzanas
+
+Así funciona el principio de casillas, en particular de este ejemplo podemos ya  sacar una versión del principio de casillas bastante intuitiva
+\end{flushleft}
+\begin{theorem}
+    [Caso particular del principio de casillas]
+    Si tenemos $n$ casillas y al menos $n+1$ objetos, habrá al menos una casilla con al menos $2$ objetos
+\end{theorem}
+\begin{flushleft}
+Al igual que antes, esto es obvio, pues el "peor caso" sería que todos las casilla haya un objeto, necesitando $n$ objetos pero el siguiente objeto ya tendrá que estar en una caja con un objeto, usando ya $2$ objetos.
+\end{flushleft}
+Presentaremos ahora, la forma general del principio de casillas
+\begin{theorem}
+    [Principio de casillas]
+    Si tenemos $n$ casillas y al menos $nk+1$ objetos, habrá al menos una casilla con al menos $k+1$ objetos
+\end{theorem}
+\begin{flushleft}
+    
+Trata de demostrar esto, la demostración no es muy diferente a la versión que ya vimos, pero quiero que estes convencido de que es cierto.
+
+
+\begin{example}
+    De cinco puntos dentro o sobre los lados de un triángulo equilátero de lado $2$ hay dos puntos cuya distancia entre ellos en menor o igual a $1$
+\end{example}
+\begin{proof}
+    En este ejemplo nosotros vamos a construir las casillas, vamos a dividir el triángulo equilátero en cuatro triángulos equiláteros de lado $1$ como se muestra
+    \begin{center}
+        
+    \begin{asy}
+        import graph; size(4cm); 
+        draw((0,0)--(2,0)--(1,1.73205)--cycle);
+        draw((0.5,0.86602)--(1,0)--(1.5,0.86602)--cycle);
+        dot((0.3,0.4));
+        dot((0.8,0.6));
+        dot((1.2,1.1));
+        dot((1,1.6));
+        dot((1.3,0.3));
+        
+    \end{asy}
+    \end{center}
+    Son cuatro regiones como queremos colocar cinco puntos por el principio de casillas deben haber dos puntos en alguna región, o sea, hay dos puntos dentro de un triángulo equilátero de lado $1$, entonces esos dos puntos están a distancia menor o igual a $1$
+\end{proof}
+\end{flushleft}
+\begin{example}
+    Si se eligen cinco números de los enteros del 1 al 8, demuestra que dos de ellos deben sumar $9$
+
+\end{example}
+
+\begin{proof}
+    La suma de parejas que suman $9$ son
+    \begin{center}
+        \boxed{1,8}
+
+        \boxed{2,7}
+
+        \boxed{3,6}
+
+        \boxed{4,5}
+    \end{center}
+    Esas serán nuestras casillas, y a los $5$ números que eligamos los colocaremos en su respectiva casilla; como vamos a escoger $5$ números y hay $4$ casillas entonces va a haber una casilla con dos números o sea habrá una pareja que suma $9$
+\end{proof}
+\begin{example}
+    Demuestra que en una fiesta de $n$ personas siempre hay dos personas conocen a el mismo número de personas dentro de la fiesta
+\end{example}
+\begin{proof}
+    Los conocidos de una persona dentro de la fiesta es un número dentro de $\{0,1,2,\ldots,n-1\}$ pero note que si hay una persona que no conoce a nadie (0 conocidos) entonces no puede haber alguien que conozca a todos ($n-1$ conocidos) de modo que hay $n-1$ números posibles que alguien puede tener de conocidos, pero hay $n$ personas entonces hay dos personas que conocen a la misma cantidad de persona
+\end{proof}
+En este caso nuestras casillas fueran el número de conocidos que puede tener alguien, y los objetos, las $n$ personas.
+\begin{example}
+   Prueba que si se colocan $26$ puntos dentro de un cuadrado de lado $1$ entonces hay $2$ a una distancia menor que $\frac{2}{7}$
+\end{example}
+En este ejemplo es complicado saber donde puedes empezar, sin embargo escoger de forma correcta nuestras casillas nos puede ayudar mucho.
+\begin{proof}
+    Comenzamos dividiendo al cuadrado de lado $1$ en una cuadrícula de $5\times 5$, como se muestra
+    \begin{center}
+        \begin{asy}
+        size(5cm);
+
+// Dibuja la cuadrícula
+for (int i = 0; i <= 5; ++i) {
+    draw((i,0)--(i,5), gray);
+    draw((0,i)--(5,i), gray);
+}
+
+// Dibuja los puntos en el cuadrito (2,3)
+dot((2.5,3.2));
+dot((2.2,3.6));
+
+
+// Opcional: dibuja el cuadrito (2,3)
+pen borderPen = linewidth(1.2) + red;
+pair A = (2,3), B = (3,3), C = (3,4), D = (2,4);
+draw(A--B--C--D--cycle, borderPen);
+
+// Ajusta el tamaño de la visualización
+clip((0,0),(5,5));
+        \end{asy}
+    \end{center}
+    Entonces en particular hay dos puntos que estan dentro de un cuadrado de lado $\frac{1}{5}$ entonces basta probar que la diagonal de este cuadrado mide menos que $\frac{2}{7}$, o sea que 
+    \[\sqrt{\left(\frac{1}{5}\right)^2+\left(\frac{1}{5}\right)^2}\leq \frac{2}{7}\]
+    Lo cuál es sencillo de demostrar
+\end{proof}
+\begin{example}
+    Demuestra que un tablero de ajedrez de $8\times 8$ se colocan $17$ torres, demuestra que hay al menos $3$ torres que no se atacan entre sí
+\end{example}
+Tiene sentido pensar en dividir de alguna forma el tablero de $8\times 8$ en conjuntos de modo que entre ellos no se atacan.
+\begin{proof}
+    Considera la siguiente enumeración de las casillas del tablero de $8\times 8$
+    \begin{center}
+        $$\begin{array}{|c|c|c|c|c|c|c|c|} \hline
+1&2&3&4&5&6&7&8\\ \hline
+2&3&4&5&6&7&8&1\\ \hline
+3&4&5&6&7&8&1&2\\ \hline
+4&5&6&7&8&1&2&3\\ \hline
+5&6&7&8&1&2&3&4\\ \hline
+6&7&8&1&2&3&4&5\\ \hline
+7&8&1&2&3&4&5&6\\ \hline
+8&1&2&3&4&5&6&7\\ \hline
+\end{array}$$
+    \end{center}
+    Nota que si dos si hay dos torres en casillas con el mismo número entonces estas nunca se atacan, como queremos poner $17$ torres (objetos) y hay $8$ números (casillas) entonces hay $3$ torres que están en casillas con el mismo número.
+\end{proof}
+
+\section{Ejercicios}
+\begin{exercise}
+    En un grupo de $13$ personas hay dos que nacieron el mismo mes
+\end{exercise}
+\begin{exercise}
+    Dados $12$ enteros, prueba que se pueden escoger $2$ de tal forma que su diferencia sea divisible entre $11$
+\end{exercise}
+\begin{exercise}
+    Prueba que una línea recta que no pasa por uno de los vértices de un triángulo, no puede cortar los tres lados del triángulo.
+\end{exercise}
+\begin{exercise}
+    
+\end{exercise}
+\section{Problemas}
+
+
+\Opensolutionfile{all-hints}
+
+
+\begin{problem}
+Se eligen $n+1$ números dentro del conjunto $\{1,2,3\ldots, 2n\}$, demuestra que existen dos cuyo máximo común divisor es $1$
+
+  \begin{hint}
+  Divide el conjunto en $n$ conjuntos de modo que cada conjunto tenga dos elementos y su máximo común divisor sea $1$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+   Con los vertices de una cuadricula de $6\times 9$, se forman $24$ triangulos. Muestre que hay dos tráingulos que tienen un vértice en común.
+   \begin{hint}
+       Cuántos vértices ocupan los $24$ triángulos
+   \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra que de $12$ numeros distintos de dos digitos, siempre hay dos cuya diferencia es un número de dos dígitos
+    \begin{hint}
+        La condición es equivalente a que su diferencia sea múltiplo de $11$(¿Por qué?)
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+ Se colorean todos los puntos del plano de rojo o azul. Demuestra que existen cuatro puntos del mismo color que forman un rectángulo
+\begin{hint}
+    Asume que no se puede, considerate tres puntos en una misma línea del mismo color (¿Por qué existen?) y luego dibuja perpendiculares a esa recta con vértices en esos puntos, analiza las colores de los puntos de las paralelas a la primer línea
+    \begin{center}
+        \begin{asy}
+             size(6cm);
+            draw((0,0)--(2,0));
+            draw((0,0)--(0,2));
+            draw((1,0)--(1,2));
+            draw((2,0)--(2,2));
+            filldraw(circle((0,0),0.1), blue);
+            filldraw(circle((1,0),0.1), blue);
+            filldraw(circle((2,0),0.1), blue);
+            draw((0,0.4)--(2,0.4), dashed);
+            draw((0,0.8)--(2,0.8), dashed);
+            draw((0,1.2)--(2,1.2), dashed);
+            draw((0,1.6)--(2,1.6), dashed);
+        \end{asy}
+    \end{center}
+\end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Demuestra que un triángulo equilátero de lado uno no puede ser cubierto totalmente por triángulos equiláteros de lados menor que $1$
+    \begin{hint}
+       Uno de esos triángulos equiláteros con lado menor que $1$ no puede cubrir simultáneamente dos vértices del otro triángulo
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+Sean $a, b, c$ y $d$ enteros, muestre que $(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)$ es
+divisible entre $12$.
+
+    \begin{hint}
+        Dentro de $4$ números hay $3$ con la misma paridad y hay $2$ que tienen el mismo residuo al dividirse entre $4$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra los criterios de divisibilidad de $1$ al $11$ sin inculuir el del $7$
+    \begin{hint}
+         un número $n=\overline{a_ka_{k-1}a_{k-2}\cdots a_2a_1a_0}$ se puede escribir como $n=10^{k}a_k+10^{k-1}a_{k-1}+\cdots 10a_1+10^{0}a_0$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c5h404350p2254778}{USAJMO 2011/1}]
+Encuentre, con prueba, todos los números enteros positivos $n$ para los cuales $2^n + 12^n + 2011^n$ es un cuadrado perfecto.
+  \begin{hint}
+  analiza $\pmod 3$ y luego $\pmod 4$
+  \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}[Freshman's dream]
+    Demuestra que para todos $a,b\in \mathbb{Z}$, y $p$ un primo se cumple que 
+    \[(a+b)^p\equiv a^p+b^p\]
+    \begin{hint}
+        Binomio de Newton
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h238569p1313424}{IMO 1964/1}]\phantom \\
+    \begin{walk}
+        \ii Encuentre todos los números enteros positivos $ n$ para los cuales $ 2^n-1$ es divisible por $ 7$.
+        \ii Demuestre que no existe un entero positivo $ n$ para el cual $ 2^n+1$ sea divisible por $ 7$.
+    \end{walk}
+ 
+\begin{hint}
+    Analiza a $n\pmod 3$ y mira que residuos que dejan las potencias de $2$ al dividirse por $7$
+\end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    [\href{https://artofproblemsolving.com/community/c6h60769p366557}{IMO 1986/1}]
+    Sea $d$ cualquier entero no igual a $2,5$ o $13$. Prueba que podemos escoger dos enteros distintos $a$ y $b$ en el conjunto $\{2,5,13,d\}$ tal que $ab-1$ no es un cuadrado perfecto
+    \begin{hint}
+        Asume que $2d-1$, $5d-1$, $13d-1$ son todos cuadrados, analízalos módulo $4$ y luegó mod $5$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+    Demuestra que $n\mid 2^{n!}-1$ para todo $n$ impar
+    \begin{hint}
+        Demuestra que existe un entero $d$ tal que $2^d\equiv 1\pmod n$ y $d\leq n$
+    \end{hint}
+\end{problem}
+\vspace{0.1cm}
+\begin{problem}
+[\href{https://artofproblemsolving.com/community/c6h17324p29761813}{1 IMO SL/2002}]
+    ¿Cuál es el entero positivo más pequeño $t$ tal que existan enteros $x_1,x_2,\ldots,x_t$ con \[x^3_1+x^3_2+\,\ldots\,+x^3_t=2002^{2002} \,?\]
+    \begin{hint}
+        La respuesta es $t=4$ usa $\pmod 9$ para demostrar que $t\leq 4$ no es alcanzable
+    \end{hint}
+\end{problem}
+
+
+
+
+
+\bigskip
+
+\section{Hints}
+\Closesolutionfile{all-hints}
+\begin{enumerate}
+  \input{all-hints.out}
+\end{enumerate}
+
+
+\end{document}
